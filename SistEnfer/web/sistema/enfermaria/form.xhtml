@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core" >
+    <h:form acceptcharset="ISO-8859-1">
+        <p:panel header="Cadastro de Enfermaria">
+            <h:panelGrid columns="2">
+
+                <h:outputLabel value="Nome: "/>
+                <p:inputText value="#{contrenfermaria.enfermaria.nome}"/>
+            </h:panelGrid>
+        </p:panel>
+
+        <p:panel header="Leitos">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Número Leito: "/>
+                <p:inputText value="#{contrenfermaria.leito.num}"/>
+
+                <h:outputLabel value="Descrição: "/>
+                <p:inputText value="#{contrenfermaria.leito.descricao}"/>
+
+
+                <p:commandButton value="Add Leitos"   
+                                 action="#{contrenfermaria.addLeitos()}" update="leitos" ajax="false"/>  
+                <p:ajaxStatus style="width:16px;height:16px;">  
+                    <f:facet name="start">  
+                        <h:graphicImage value="..resources/img/ajaxloading.gif" />  
+                    </f:facet>  
+
+                    <f:facet name="complete">  
+                        <h:outputText value="" />  
+                    </f:facet>  
+                </p:ajaxStatus>    
+
+            </h:panelGrid>
+            <p:dataTable id="descricao" value="#{contrenfermaria.leitos}" var="item">
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Número"/>
+                    </f:facet>
+                    <h:outputText value="#{item.num}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Descrição"/>
+                    </f:facet>
+                    <h:outputText  value="#{item.descricao}"/>
+                </p:column>
+
+            </p:dataTable>
+            
+        </p:panel>
+        <ui:insert/>
+    </h:form>
+</ui:composition>

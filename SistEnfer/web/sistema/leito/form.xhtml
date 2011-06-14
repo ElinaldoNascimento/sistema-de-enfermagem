@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core" >
+    <h:form acceptcharset="ISO-8859-1">
+        <p:panel header="Cadastro de Leito">
+            <h:panelGrid columns="2">
+            <h:outputLabel value="Numero: "/>
+            <p:inputText value="#{contrleito.leito.num}"/>
+            
+            <h:outputLabel value="Descrição: "/>
+            <p:inputText value="#{contrleito.leito.descricao}"/>
+            </h:panelGrid>
+        </p:panel>
+        <ui:insert/>
+    </h:form>
+</ui:composition>
