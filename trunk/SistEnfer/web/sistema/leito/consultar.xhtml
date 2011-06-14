@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.prime.com.tr/ui"
+                template="./../menus/basemenu.xhtml">
+
+    <ui:define name="titulo">
+        Listagem de Leitos
+    </ui:define>
+
+    <ui:define name="migalhas">
+        <p:menuitem value="Inicio" action="/sistema/gerenciador.xhtml"/>
+        <p:menuitem value="Hospital" action="#"/>
+        <p:menuitem value="Clinica" action="#"/>
+        <p:menuitem value="Lista de Leitos" action="#"/>
+    </ui:define>
+
+    <ui:define name="corpo">
+        <ui:decorate template="list.xhtml">
+
+        </ui:decorate>
+    </ui:define>
+
+</ui:composition>

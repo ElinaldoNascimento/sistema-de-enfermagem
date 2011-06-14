@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core" >
+    <h:form acceptcharset="ISO-8859-1">
+        <p:panel header="Cadastro de Paciente">
+            <p:tabView>
+                <p:tab title="Dados Pessoais">
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="Nome: "/>
+                        <p:inputText size="40" value="#{contrpaciente.paciente.nome}"/>
+
+                        <h:outputLabel value="Sobrenome"/>
+                        <p:inputText size="40" value="#{contrpaciente.paciente.sobrenome}"/>
+
+                        <h:outputLabel value="Data Nasc:"/>
+                        <p:calendar >
+
+                        </p:calendar>
+
+                        <h:outputLabel value="Telefone:"/>
+                        <p:inputMask mask="(99)9999-9999" value="#{contrpaciente.telefone.numero}"/>
+                        <p:commandButton value="Add Outro Telefone"   
+                                         action="#{contrpaciente.addTelefone()}" update="telefones" ajax="false"/>  
+                        <p:ajaxStatus style="width:16px;height:16px;">  
+                            <f:facet name="start">  
+                                <h:graphicImage value="..resources/img/ajaxloading.gif" />  
+                            </f:facet>  
+
+                            <f:facet name="complete">  
+                                <h:outputText value="" />  
+                            </f:facet>  
+                        </p:ajaxStatus>    
+
+                        <h:outputLabel value="Sexo: "/>
+                        <h:selectOneRadio value="#{contrpaciente.sexo}">
+                            <f:selectItems
+                                value="#{contrpaciente.listSexo}"/>
+                        </h:selectOneRadio>
+
+                        <h:outputLabel value="Raça: "/>
+                        <h:selectOneMenu value="#{contrpaciente.raca}">
+                            <f:selectItem itemLabel="Raça"/>
+                            <f:selectItems 
+                                value="#{contrpaciente.listRaca}"/>
+                        </h:selectOneMenu>
+
+                        <h:outputLabel value="Nacionalidade: "/>
+                        <p:inputText value="#{contrpaciente.paciente.nacionalidade}"/>
+
+                        <h:outputLabel value="Naturalidade: "/>
+                        <p:inputText value="#{contrpaciente.paciente.naturalidade}"/>
+
+                        <h:outputLabel value="Estado Civil"/>
+                        <h:selectOneMenu value="#{contrpaciente.estado_civil}">
+                            <f:selectItem itemLabel="Estado Civil"/>
+                            <f:selectItems 
+                                value="#{contrpaciente.listEstadoCivil}"/>                            
+                        </h:selectOneMenu>
+
+                        <h:outputLabel value="Escolaridade"/>
+                        <h:selectOneMenu value="#{contrpaciente.escolatidade}">
+                            <f:selectItem itemLabel="Escolaridade"/>
+                            <f:selectItems 
+                                value="#{contrpaciente.listEscolaridade}"/>                            
+                        </h:selectOneMenu>
+
+                        <h:outputLabel value="Profissão"/>
+                        <p:inputText size="40" value="#{contrpaciente.paciente.profissao}"/>
+
+                        <h:outputLabel value="Procedência"/>
+                        <p:inputTextarea rows="10" cols="40" value="#{contrpaciente.paciente.procedencia}"/>
+                    </h:panelGrid>
+
+                    <p:dataTable id="telefones" value="#{contrpaciente.telefones}" var="item">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Número"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+
+                </p:tab>
+            </p:tabView>            
+        </p:panel>
+        <ui:insert/>
+    </h:form>
+</ui:composition>

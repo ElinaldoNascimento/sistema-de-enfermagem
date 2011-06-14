@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.prime.com.tr/ui"
+    xmlns:f="http://java.sun.com/jsf/core" >
+    <h:form>
+        <p:dataTable var="item" value="#{contrleito.listLeitos}" rows="10" paginator="true" onselectComplete="dialog.show();"
+                     selection="#{contrleito.leitoSelecioando}" selectionMode="single" update="panel">
+
+            <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{item.id}"/>
+            </p:column>
+
+            <p:column sortBy="#{item.num}" filterBy="#{item.num}">
+                <f:facet name="header">
+                    <h:outputText value="Número Leito"/>
+                </f:facet>
+                <h:outputText value="#{item.num}"/>
+            </p:column>
+            
+            <p:column sortBy="#{item.descricao}" filterBy="#{item.descricao}">
+                <f:facet name="header">
+                    <h:outputText value="Descrição"/>
+                </f:facet>
+                <h:outputText value="#{item.descricao}"/>
+            </p:column>
+
+            <ui:insert />
+
+        </p:dataTable>
+    </h:form>
+
+    <p:dialog widgetVar="dialog" modal="true" header="informações" showEffect="explode" hideEffect="explode">
+        <h:panelGrid columns="2" id="panel">
+            <h:outputText value="ID: "/>
+            <h:outputText value="#{contrleito.leitoSelecioando.id}"/>
+
+            <h:outputText value="Num:"/>
+            <h:outputText value="#{contrleito.leitoSelecioando.num}"/>
+            
+            <h:outputText value="Descrição:"/>
+            <h:outputText value="#{contrleito.leitoSelecioando.descricao}"/>
+
+        </h:panelGrid>
+    </p:dialog>
+</ui:composition>
